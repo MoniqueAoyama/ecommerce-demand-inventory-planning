@@ -1,0 +1,12 @@
+# Data: too large for GitHub
+data/
+
+# Python virtual environment and cache
+.venv/
+__pycache__/
+
+#macOS system files 
+.Ds_Store
+
+# Personal AI assistant settings
+CLAUDE.md
