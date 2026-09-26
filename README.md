@@ -37,4 +37,4 @@ Python, SQL, DuckDB, pandas, matplotlib
 
 ## Contact
 
-Monique Aoyama · [LinkedIn] (https://www.linkedin.com/in/moniqueaoyama/?isSelfProfile=true)
+Monique Aoyama · [LinkedIn](https://www.linkedin.com/in/moniqueaoyama/)
