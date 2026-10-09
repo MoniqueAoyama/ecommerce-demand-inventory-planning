@@ -21,6 +21,7 @@ online_total <- online |>
 # Plot 1: total online sales per week
 online_total |>
   autoplot(units) +
+  scale_y_continuous(labels = scales::comma) +
   labs(title = "Weekly online units", x = NULL, y = "Units")
 
 ggsave("reports/online_weekly_total.png", width = 9, height = 4)
@@ -28,9 +29,9 @@ ggsave("reports/online_weekly_total.png", width = 9, height = 4)
 # Plot 2: one panel per group, each with its own scale
 online |>
   autoplot(units) +
+  scale_y_continuous(labels = scales::comma) +
   facet_wrap(~ index_group, scales = "free_y") +
   theme(legend.position = "none") +
   labs(title = "Weekly online units by group", x = NULL, y = "Units")
 
 ggsave("reports/online_weekly_by_group.png", width = 10, height = 6)
-
