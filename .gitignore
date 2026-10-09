@@ -12,3 +12,8 @@ __pycache__/
 
 # Personal AI assistant settings
 CLAUDE.md
+
+# RStudio
+.Rproj.user/
+.Rhistory
+.RData

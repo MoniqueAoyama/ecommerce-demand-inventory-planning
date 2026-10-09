@@ -26,3 +26,9 @@ SELECT
 FROM smoothed
 GROUP BY index_group
 ORDER BY cv_pct DESC
+
+-- Result: week to week, every group lands about 15% to 19% away from
+-- its 4-week moving average, smaller groups a bit more.
+-- Baby/Children's cv is 80.5% because sales dropped a lot in early 2019,
+-- not because they jump around week to week. Week to week (vs_ma_pct 19.2%)
+-- it behaves like the other groups.
