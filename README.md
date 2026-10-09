@@ -65,6 +65,19 @@ Also explored:
   dropped from about 20,000 to 7,000 units a week between Oct 2018 and
   Mar 2019, and stayed low. Not related to the pandemic.
 
+## Weekly online sales
+
+![Weekly online units](reports/online_weekly_total.png)
+
+The peaks from Q3 are easy to spot: Black Friday, mid-June in both years
+and April 2020. December is low in both years.
+
+![Weekly online units by group](reports/online_weekly_by_group.png)
+
+Each group has its own scale. Ladieswear, Divided, Menswear and Sport repeat
+their peaks every year, while Baby/Children falls steadily and stays low.
+Charts made in R ([R/01_explore.R](R/01_explore.R)).
+
 ## What this means for the forecast
 
 - The June and Black Friday peaks repeat every year, so the models need
@@ -73,13 +86,26 @@ Also explored:
 - Baby/Children moved to a much lower level in early 2019, so its older
   weeks don't describe current demand.
 
+## Forecast
+
+Work in progress in [R/02_forecast.R](R/02_forecast.R).
+
+The last 8 weeks are held out to test the models. They learn from the first
+96 weeks (2018 W39 to 2020 W30) and are compared with what actually sold in
+the last 8 (2020 W31 to W38). The split follows time instead of picking
+random weeks, since a forecast can only learn from the past.
+
+The test weeks fall in July to September 2020, still during the pandemic,
+so it's a hard period to forecast.
+
 ## Plan
 
 - [x] Load the Kaggle files into DuckDB
 - [x] Clean layer and weekly sales table
 - [x] Business questions in SQL
 - [x] Export the weekly table to CSV
-- [ ] Weekly demand forecast for the online channel in R
+- [x] Weekly online series and train/test split in R
+- [ ] Compare forecast models for the online channel
 - [ ] Safety stock and reorder points
 - [ ] Tableau dashboard
 
@@ -105,9 +131,14 @@ Download the three CSV files from Kaggle into `data/raw/`, then:
 
 Any file in `sql/analysis/` runs the same way.
 
+For the R part, open `ecommerce-demand-inventory-planning.Rproj` in RStudio,
+install the packages once with `install.packages(c("tidyverse", "fpp3"))`,
+and run the scripts in `R/` in order. They only need
+`exports/weekly_sales.csv`, which is already in the repo.
+
 ## Tools
 
-Python, SQL, DuckDB
+Python, SQL, DuckDB, R (tidyverse, fpp3)
 
 ## Contact
 
