@@ -29,3 +29,26 @@ online |>
   geom_line() +
   scale_y_continuous(labels = scales::comma) +
   labs(title = "Train and test weeks", x = NULL, y = "Units", colour = NULL)
+
+# Fit four models on the training weeks, separately for each group
+fits <- train |>
+  model(
+    naive  = NAIVE(units),
+    snaive = SNAIVE(units ~ lag("year")),
+    ets    = ETS(units ~ season("N")),   # no seasonality, ETS can't handle 52 weeks
+    arima  = ARIMA(units)
+  )
+
+fits
+
+# Forecast the 8 test weeks
+fc <- fits |> forecast(h = test_weeks)
+
+# Forecasts vs actual sales, from Jan 2020 on
+fc |>
+  autoplot(online |> filter(week >= yearweek("2020 W01")), level = NULL) +
+  facet_wrap(~ index_group, scales = "free_y") +
+  scale_y_continuous(labels = scales::comma) +
+  labs(title = "Forecasts for the 8 test weeks", x = NULL, y = "Units", colour = "Model")
+
+ggsave("reports/forecast_test.png", width = 10, height = 6)
