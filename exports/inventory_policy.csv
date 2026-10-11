@@ -1,0 +1,6 @@
+index_group,model,lead_time_demand,error_sd,safety_stock,reorder_point,ss_pct
+Baby/Children,naive,5696,1134,2638,8334,46.3
+Divided,naive,89246,3562,8286,97532,9.3
+Ladieswear,snaive,340398,12008,27933,368331,8.2
+Menswear,naive,14644,1133,2636,17280,18
+Sport,naive,16756,1130,2629,19385,15.7
